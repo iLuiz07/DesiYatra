@@ -62,7 +62,8 @@ def test_atomic_tool_initiate_call():
     }
     trip_context = {
         "market_rate": 2800.0,
-        "budget_max": 3000.0
+        "budget_max": 3000.0,
+        "party_size": 4
     }
     
     result = atomic_tools.initiate_call(vendor, trip_context)
@@ -76,7 +77,7 @@ def test_atomic_tool_send_message():
     """Test the send_message atomic tool."""
     # First initiate a call
     vendor = {"name": "Test Vendor", "phone": "+919876543210", "category": "taxi"}
-    trip_context = {"market_rate": 2800.0, "budget_max": 3000.0}
+    trip_context = {"market_rate": 2800.0, "budget_max": 3000.0, "party_size": 4}
     init_result = atomic_tools.initiate_call(vendor, trip_context)
     call_id = init_result["call_id"]
     
@@ -92,7 +93,7 @@ def test_atomic_tool_accept_deal():
     """Test the accept_deal atomic tool."""
     # First initiate a call
     vendor = {"name": "Test Vendor", "phone": "+919876543210", "category": "taxi"}
-    trip_context = {"market_rate": 2800.0, "budget_max": 3000.0}
+    trip_context = {"market_rate": 2800.0, "budget_max": 3000.0, "party_size": 4}
     init_result = atomic_tools.initiate_call(vendor, trip_context)
     call_id = init_result["call_id"]
     
@@ -110,7 +111,7 @@ def test_atomic_tool_end_call():
     
     # First initiate a call
     vendor = {"name": "Test Vendor", "phone": "+919876543210", "category": "taxi"}
-    trip_context = {"market_rate": 2800.0, "budget_max": 3000.0}
+    trip_context = {"market_rate": 2800.0, "budget_max": 3000.0, "party_size": 4}
     init_result = atomic_tools.initiate_call(vendor, trip_context)
     call_id = init_result["call_id"]
     
