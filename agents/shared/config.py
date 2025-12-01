@@ -30,7 +30,7 @@ class Settings(BaseSettings):
 
     # Application
     environment: str = "development"
-    log_level: str = "INFO"
+    log_level: str = "DEBUG"
     max_concurrent_calls: int = 10
     call_timeout_seconds: int = 300
 

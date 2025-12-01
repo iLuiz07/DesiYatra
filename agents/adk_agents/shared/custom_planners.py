@@ -5,34 +5,33 @@ These planners provide domain-specific reasoning and decision-making logic
 to replace the generic BuiltInPlanner.
 """
 from typing import List, Dict, Any, Optional
-from google.adk.planners import Planner
+from google.adk.planners import BasePlanner as Planner
 from google.genai import types
 from loguru import logger
+from google.adk.tools import BaseTool
 
+class CustomBasePlanner(Planner):
+    """
+    Base class for custom planners that implement their own plan() logic
+    and don't use the standard ADK instruction/response loop.
+    """
+    def build_planning_instruction(self, instruction: str, tools: List[BaseTool]) -> types.Content:
+        # Not used since we override plan()
+        return types.Content(role="user", parts=[types.Part(text="ignored")])
 
-class NegotiationPlanner(Planner):
+    def process_planning_response(self, response: Any) -> Any:
+        # Not used since we override plan()
+        return {}
+
+class NegotiationPlanner(CustomBasePlanner):
     """
     Custom planner for negotiation agent.
-    
-    Makes strategic decisions during price negotiation based on:
-    - Vendor's quoted price vs market rate
-    - Negotiation history (rounds, previous offers)
-    - Budget constraints
-    - Vendor profile (stubborn vs flexible)
     """
     
     def __init__(self, max_rounds: int = 6):
         self.max_rounds = max_rounds
         
     async def plan(self, context: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Plan the next negotiation move.
-        
-        Returns a plan with:
-        - action: "counter", "accept", or "end_call"
-        - reasoning: Why this action was chosen
-        - message: What to say to vendor
-        """
         # Extract context
         current_quote = context.get("current_quote")
         market_rate = context.get("market_rate")
@@ -94,21 +93,12 @@ class NegotiationPlanner(Planner):
         }
 
 
-class VendorSelectionPlanner(Planner):
+class VendorSelectionPlanner(CustomBasePlanner):
     """
     Custom planner for selecting which vendors to call.
-    
-    Prioritizes based on:
-    - Trust score / safety rating
-    - Distance from user's location
-    - Reviews and ratings
-    - Price competitiveness
     """
     
     async def plan(self, context: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Plan vendor selection strategy.
-        """
         vendors = context.get("safe_vendors", [])
         budget_max = context.get("budget_max")
         
@@ -143,9 +133,6 @@ class VendorSelectionPlanner(Planner):
             else:
                 score += 10
             
-            # Recency (if available) × 20 points
-            # Newer listings preferred
-            
             scored_vendors.append({
                 "vendor": vendor,
                 "score": score
@@ -169,20 +156,12 @@ class VendorSelectionPlanner(Planner):
         }
 
 
-class SafetyDecisionPlanner(Planner):
+class SafetyDecisionPlanner(CustomBasePlanner):
     """
     Custom planner for safety vetting decisions.
-    
-    Makes nuanced safety decisions beyond simple pass/fail:
-    - GREEN: Safe to call
-    - YELLOW: Caution - call but monitor extra
-    - RED: Block - do not call
     """
     
     async def plan(self, context: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Plan safety vetting decision for a vendor.
-        """
         vendor = context.get("vendor", {})
         fraud_signals = context.get("fraud_signals", [])
         vendor_history = context.get("vendor_history", {})
@@ -242,13 +221,6 @@ class SafetyDecisionPlanner(Planner):
 def get_planner(agent_type: str, **kwargs) -> Optional[Planner]:
     """
     Get custom planner for specific agent type.
-    
-    Args:
-        agent_type: "negotiation", "vendor_selection", or "safety"
-        **kwargs: Additional planner-specific config
-        
-    Returns:
-        Planner instance or None for default behavior
     """
     planners = {
         "negotiation": NegotiationPlanner,
